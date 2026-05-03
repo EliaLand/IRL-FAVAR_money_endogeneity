@@ -131,7 +131,7 @@ def aggregate_violin_plot(df, palette, title):
     for j in range(i + 1, len(axes)):
         fig.delaxes(axes[j])
 
-    plt.suptitle(f"{title}", y=1.02, fontsize=15)
+    plt.suptitle(f"{title}", y=1.02,fontsize=15)
     plt.tight_layout()
     plt.show()
 
@@ -255,7 +255,7 @@ def correlation_heatmap(df, palette, title):
                 cbar_kws={"shrink": .8},
                 annot_kws={"size": 8}) 
 
-    plt.title(f"{title}", y=1.02, fontsize=15)
+    plt.title(f"{title}", y=1.02, fontsize=10)
     plt.tight_layout()
     plt.show()
 
@@ -302,7 +302,7 @@ def ar1_unitroot_circle(df, palette, title):
 # We extract values and parameters from the ADF unit root tests
     core_variables = adf_df["Variable"].tolist()
     ar1_values = adf_df["AR(1)"].values         
-    stationary  = adf_df["Stationary - Absence of unit-root (HP1)"].tolist()
+    stationary = adf_df["Stationary - Absence of unit-root (HP1)"].tolist()
 # Angle of the circle
     theta = np.linspace(0, 2 * np.pi, 100)
 # Color Palette 
@@ -334,13 +334,13 @@ def ar1_unitroot_circle(df, palette, title):
     ax1.set_xlim(-1.35, 1.35)
     ax1.set_ylim(-1.35, 1.35)
     ax1.set_aspect("equal")
-    ax1.set_title("AR(1) Coefficients on Unit Circle\n(Imaginary = 0 for univariate series)", pad=10)
-    ax1.set_xlabel("AR(1) Coefficient")
-    ax1.set_ylabel("Imaginary Part (= 0)")
+    ax1.set_title("AR(1) Coefficients on Unit Circle\n(Imaginary = 0 for univariate series)", pad=10, fontsize=10)
+    ax1.set_xlabel("AR(1) Coefficient", fontsize=8)
+    ax1.set_ylabel("Imaginary Part (= 0)", fontsize=8)
     ax1.tick_params(labelsize=8)
     for spine in ax1.spines.values():
         spine.set_visible(False)
-    ax1.legend(loc="lower right")
+    ax1.legend(loc="lower right", fontsize=8)
 
 # Simulated AR(1) processes 
 # Grid settings
@@ -379,7 +379,7 @@ def ar1_unitroot_circle(df, palette, title):
 # Cosmetics
         ax.set_title(
             f"{var} - AR(1)={ar1:.4f}",
-            fontsize=6.8, loc="left", pad=3
+            fontsize=9, loc="left", pad=3
         )
 # ylabel: x(t)
         ax.set_ylabel("x(t)", fontsize=8, labelpad=2)
@@ -389,5 +389,5 @@ def ar1_unitroot_circle(df, palette, title):
 # xlabel (we only plot the x label on the last bottom subplot)
         if i == len(core_variables) - 1:
             ax.set_xlabel("lag t", fontsize=8)
-    plt.suptitle(f"{title}", y=1.02, fontsize=15)
+    plt.suptitle(f"{title}", y=1.02, fontsize=10)
     plt.show()
